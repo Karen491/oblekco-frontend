@@ -39,4 +39,33 @@ code {
   padding: 8px;
 }
 
+.navbar {
+  background-color: rgba(134, 48, 17, 0.863);
+}
+
+.nav-title-text {
+  font-family: cursive;
+  text-decoration: none;
+  color: white;
+  font-size: 30px;
+  margin-left: 25px; 
+}
+
+.nav-title-text:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.nav-text {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  margin: 20px;
+}
+
+.nav-text:hover {
+  text-decoration: none;
+  color: white;
+}
+
 
