@@ -18,7 +18,7 @@ class AuthForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         const { user } = this.state;
-        const isLogin = this.props.pathname.pathname === "/";
+        const isLogin = this.props.location.pathname === "/";
         const { setUser } = this.context;
         const action = isLogin ? login : signup;
 
@@ -36,86 +36,90 @@ class AuthForm extends Component {
     };
 
     render() {
-        const isSignup = this.props.pathname.pathname === "/signup";
+        const isSignup = this.props.location.pathname === "/signup";
+        const { state } = this.context;
 
         return (
-            <div className="uk-width-1-1 uk-flex uk-flex-middle uk-flex-right login" uk-height-viewport="true">
-
-                <div className="uk-card uk-card-default uk-card-body uk-width-1-3@m uk-margin-xlarge-right authform-card">
-                    <h2 className="title-text uk-text-center">Running Tracker</h2>
-
-                    <form onSubmit={this.handleSubmit}>
-                        {isSignup ? (
-                            <div className="uk-margin">
-                                <div className="uk-inline uk-width-1-1">
-                                    <span className="uk-form-icon" uk-icon="icon: star"></span>
-                                    <input
-                                        onChange={this.handleChange}
-                                        placeholder="Name"
-                                        id="name"
-                                        name="name"
-                                        className="uk-input"
-                                        type="text"
-                                    />
-                                </div>
-                            </div>
-                        ) : null}
-
-                        {isSignup ? (
-                            <div className="uk-margin">
-                                <div className="uk-inline uk-width-1-1">
-                                    <span className="uk-form-icon" uk-icon="icon:  bolt"></span>
-                                    <input
-                                        onChange={this.handleChange}
-                                        placeholder="Last name"
-                                        id="last_name"
-                                        name="last_name"
-                                        className="uk-input"
-                                        type="text"
-                                    />
-                                </div>
-                            </div>
-                        ) : null}
-
-                        <div className="uk-margin">
-                            <div className="uk-inline uk-width-1-1">
-                                <span className="uk-form-icon" uk-icon="icon: user"></span>
-                                <input
-                                    onChange={this.handleChange}
-                                    placeholder="Email address"
-                                    id="email"
-                                    name="email"
-                                    className="uk-input"
-                                    type="text"
-                                />
+            <div>
+                {!state.user._id &&
+                            <div className="uk-width-1-1 uk-flex uk-flex-middle uk-flex-right login" uk-height-viewport="true">
+                            <div className="uk-card uk-card-default uk-card-body uk-width-1-3@m uk-margin-xlarge-right authform-card">
+                                <h2 className="title-text uk-text-center">Running Tracker</h2>
+            
+                                <form onSubmit={this.handleSubmit}>
+                                    {isSignup ? (
+                                        <div className="uk-margin">
+                                            <div className="uk-inline uk-width-1-1">
+                                                <span className="uk-form-icon" uk-icon="icon: star"></span>
+                                                <input
+                                                    onChange={this.handleChange}
+                                                    placeholder="Name"
+                                                    id="name"
+                                                    name="name"
+                                                    className="uk-input"
+                                                    type="text"
+                                                />
+                                            </div>
+                                        </div>
+                                    ) : null}
+            
+                                    {isSignup ? (
+                                        <div className="uk-margin">
+                                            <div className="uk-inline uk-width-1-1">
+                                                <span className="uk-form-icon" uk-icon="icon:  bolt"></span>
+                                                <input
+                                                    onChange={this.handleChange}
+                                                    placeholder="Last name"
+                                                    id="last_name"
+                                                    name="last_name"
+                                                    className="uk-input"
+                                                    type="text"
+                                                />
+                                            </div>
+                                        </div>
+                                    ) : null}
+            
+                                    <div className="uk-margin">
+                                        <div className="uk-inline uk-width-1-1">
+                                            <span className="uk-form-icon" uk-icon="icon: user"></span>
+                                            <input
+                                                onChange={this.handleChange}
+                                                placeholder="Email address"
+                                                id="email"
+                                                name="email"
+                                                className="uk-input"
+                                                type="text"
+                                            />
+                                        </div>
+                                    </div>
+            
+                                    <div className="uk-margin">
+                                        <div className="uk-inline uk-width-1-1">
+                                            <span className="uk-form-icon" uk-icon="icon: lock"></span>
+                                            <input
+                                                onChange={this.handleChange}
+                                                placeholder="Password"
+                                                id="password"
+                                                name="password"
+                                                className="uk-input"
+                                                type="password"
+                                            />
+                                        </div>
+                                    </div>
+            
+                                    <button className="authform-button uk-width-1-1">{isSignup ? "Sign Up" : "Log In"}</button>
+            
+                                    <hr className="uk-divider-icon"></hr>
+            
+                                    {!isSignup ? (
+                                        <h5 className="uk-text-center">Don't have an account? <Link to="/signup">Sign Up</Link></h5>
+                                    ) : (
+                                        <h5 className="uk-text-center">Have an account? <Link to="/">Log In</Link></h5>
+                                    )}
+                                </form>
                             </div>
                         </div>
-
-                        <div className="uk-margin">
-                            <div className="uk-inline uk-width-1-1">
-                                <span className="uk-form-icon" uk-icon="icon: lock"></span>
-                                <input
-                                    onChange={this.handleChange}
-                                    placeholder="Password"
-                                    id="password"
-                                    name="password"
-                                    className="uk-input"
-                                    type="password"
-                                />
-                            </div>
-                        </div>
-
-                        <button className="authform-button uk-width-1-1">{isSignup ? "Sign Up" : "Log In"}</button>
-
-                        <hr className="uk-divider-icon"></hr>
-
-                        {!isSignup ? (
-                            <h5 className="uk-text-center">Don't have an account? <Link to="/signup">Sign Up</Link></h5>
-                        ) : (
-                            <h5 className="uk-text-center">Have an account? <Link to="/">Log In</Link></h5>
-                        )}
-                    </form>
-                </div>
+                }
             </div>
         )
     }

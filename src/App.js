@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AppContext from "./AppContext";
 import './App.css';
+import Navbar from "./Components/Navbar/Navbar";
 import Routes from './Routes';
 
 class App extends Component {
@@ -13,17 +14,18 @@ class App extends Component {
   };
 
   render() {
-    const {state, setUser} = this;
-    
+    const { state, setUser } = this;
+
     return (
       <AppContext.Provider
         value={{
           state,
           setUser,
         }}
-      
+
       >
         <div className="home">
+          {state.user._id && <Navbar />}
           <Routes />
         </div>
       </AppContext.Provider>
