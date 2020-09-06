@@ -76,4 +76,10 @@ code {
   padding: 8px;
 }
 
+.run-card {
+  border-radius: 2%;
+  border: solid 2px rgba(185, 60, 14, 0.863);
+}
+
+
 

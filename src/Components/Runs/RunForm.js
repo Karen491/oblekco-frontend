@@ -37,7 +37,7 @@ class RunForm extends Component {
 
                 <div>
                     <div className="uk-card-body">
-                        <h2>New Run</h2>
+                        <h2 className="uk-text-bolder">New Run</h2>
                         <form className="uk-grid-small" uk-grid="true" onSubmit={this.handleSubmit}>
 
                             <div className="uk-width-1-2@s">

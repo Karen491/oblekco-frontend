@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { login, signup } from "../../Services/authServices";
+import Home from "../HomeRoute/Home";
 import AppContext from "../../AppContext";
 
 class AuthForm extends Component {
@@ -119,6 +120,10 @@ class AuthForm extends Component {
                                 </form>
                             </div>
                         </div>
+                }
+
+                {state.user._id &&
+                    <Home />
                 }
             </div>
         )

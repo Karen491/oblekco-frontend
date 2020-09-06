@@ -27,7 +27,7 @@ class Navbar extends Component {
                         </div>
 
                         <div className="uk-navbar-right">
-                            <Link className="nav-text" to="/">My Runs</Link>
+                            <Link className="nav-text" to="/myruns">My Runs</Link>
                             <Link className="nav-text" to="/newrun">+ Add New Run</Link>
                             <a className="nav-text" href="/" onClick={this.logout}>Log Out</a>
                         </div>
