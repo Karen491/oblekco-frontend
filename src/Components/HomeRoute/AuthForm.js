@@ -21,6 +21,7 @@ class AuthForm extends Component {
         const { user } = this.state;
         const isLogin = this.props.location.pathname === "/";
         const { setUser } = this.context;
+        const { history } = this.props;
         const action = isLogin ? login : signup;
 
         action(user)
@@ -29,6 +30,8 @@ class AuthForm extends Component {
                     const { user } = res.data;
                     localStorage.setItem("user", JSON.stringify(user));
                     setUser(user);
+                } else {
+                    history.push("/");
                 }
             })
             .catch((err) => {
