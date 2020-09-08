@@ -31,11 +31,11 @@ class RunList extends Component {
                                 </div>
 
                                 <div className="uk-text-left uk-margin uk-padding-small">
-                                    <h5 className="uk-margin-small">Distance: {run.distance}</h5>
-                                    <h5 className="uk-margin-small">Timing: {`${run.timing} min`}</h5>
-                                    <h5 className="uk-margin-small">Date: {dayjs(run.date).format("MMMM DD, YYYY")}</h5>
-                                    <h5 className="uk-margin-small">Run type: {run.type}</h5>
-                                    <h5 className="uk-margin-small">Place: {`${run.city}, ${run.country}`}</h5>
+                                    <h5 className="uk-margin-small"><span className="uk-text-bold">Distance: </span>{run.distance}</h5>
+                                    <h5 className="uk-margin-small"><span className="uk-text-bold">Timing: </span>{`${run.timing} min`}</h5>
+                                    <h5 className="uk-margin-small"><span className="uk-text-bold">Date: </span>{dayjs(run.date).format("MMMM DD, YYYY")}</h5>
+                                    <h5 className="uk-margin-small"><span className="uk-text-bold">Run type: </span>{run.type}</h5>
+                                    <h5 className="uk-margin-small"><span className="uk-text-bold">Place: </span>{`${run.city}, ${run.country}`}</h5>
                                 </div>
                             </div>
                         </div>
