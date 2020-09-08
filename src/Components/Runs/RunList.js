@@ -2,8 +2,11 @@ import React, { Component } from "react";
 import dayjs from "dayjs";
 import { getRun } from "../../Services/runServices";
 import { denormalizeData, normalizeData } from "../../Utils/dataUtils";
+import AppContext from "../../AppContext";
 
 class RunList extends Component {
+    static contextType = AppContext;
+
     state = {
         runs: {},
     };
@@ -17,13 +20,15 @@ class RunList extends Component {
     };
 
     render() {
-        const { runs } = this.state;
-
+        let { runs } = this.state;
+        const { state } = this.context;
+        runs = denormalizeData(runs).filter((run) => run.user === state.user._id);
+   
         return (
             <div>
                 <h2 className="uk-margin-top uk-margin-large-left uk-text-bolder">All runs</h2>
                 <div className="uk-grid-column-small uk-grid-row-large uk-child-width-1-4@s uk-text-center uk-margin-top uk-margin-left" uk-grid="true">
-                    {denormalizeData(runs).map((run, index) => (
+                    {runs.map((run, index) => (
                         <div key={index}>
                             <div className="uk-card run-card">
                                 <div className="uk-card-media-top">
@@ -45,5 +50,7 @@ class RunList extends Component {
         )
     }
 };
+
+RunList.contextType = AppContext;
 
 export default RunList;

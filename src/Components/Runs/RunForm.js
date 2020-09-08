@@ -1,17 +1,22 @@
 import React, { Component } from "react";
 import dayjs from "dayjs";
 import { createRun } from "../../Services/runServices";
+import AppContext from "../../AppContext";
 
 class RunForm extends Component {
+    static contextType = AppContext;
+
     state = {
         run: {},
     };
 
     handleChange = (e) => {
         let { run } = this.state;
+        const { state } = this.context;
+        const user = state.user._id;
         const distance = document.getElementById("distance").value;
         const type = document.getElementById("type").value;
-        run = { ...run, [e.target.name]: e.target.value, distance: distance, type: type };
+        run = { ...run, [e.target.name]: e.target.value, user: user, distance: distance, type: type };
         this.setState({ run });
     };
 
@@ -113,5 +118,7 @@ class RunForm extends Component {
         )
     }
 };
+
+RunForm.contextType = AppContext;
 
 export default RunForm;
